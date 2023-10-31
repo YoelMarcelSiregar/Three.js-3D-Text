@@ -45,7 +45,7 @@ fontLoader.load(
       bevelThickness: 0.006,
       bevelSize: 0.02,
       bevelOffset: 0.004,
-      bevelSegments: 1
+      bevelSegments: 1.0
     });
 
     // textGeometry.computeBoundingBox()
