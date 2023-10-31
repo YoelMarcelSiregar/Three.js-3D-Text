@@ -20,7 +20,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 
 // Load the image as a texture
-const backgroundImage = textureLoader.load('/static/textures/matcaps/35.jfif');
+const backgroundImage = textureLoader.load("/static/textures/matcaps/35.jfif");
 
 // Set the scene background to the image texture
 scene.background = backgroundImage;
@@ -28,7 +28,6 @@ scene.background = backgroundImage;
  * Objects
  */
 
- 
 let hearts = [];
 const fontLoader = new THREE.FontLoader();
 fontLoader.load(
@@ -37,7 +36,7 @@ fontLoader.load(
   // '/fonts/optimer_regular.typeface.json',
   (font) => {
     const textGeometry = new THREE.TextGeometry("Lee Jackson", {
-      font, 
+      font,
       size: 0.5,
       height: 0.2,
       curveSegments: 100,
@@ -55,10 +54,16 @@ fontLoader.load(
     //     textGeometry.boundingBox.max.z * -0.5,
     // )
     textGeometry.center(); // does the same things as above code
-    const matcapTexture = textureLoader.load("/static/textures/matcaps/35.jfif");
+    const matcapTexture = textureLoader.load(
+      "/static/textures/matcaps/35.jfif"
+    );
+
+    // Create a MeshMatcapMaterial with metallic properties
     const material = new THREE.MeshMatcapMaterial({
-      matcap: matcapTexture
+      matcap: matcapTexture,
+      metalness: 1 // Adjust the value as needed (0 to 1)
     });
+
     const text = new THREE.Mesh(textGeometry, material);
     scene.add(text);
 
@@ -137,10 +142,10 @@ window.addEventListener("resize", () => {
 
 // Base camera
 const camera = new THREE.PerspectiveCamera(
- 100,
- sizes.width / sizes.height,
- 0.1,
- 100
+  100,
+  sizes.width / sizes.height,
+  0.1,
+  100
 );
 camera.position.x = 3;
 camera.position.y = 2;
@@ -181,7 +186,6 @@ const tick = () => {
     heart.rotation.x = elapsedTime;
     heart.rotation.y = elapsedTime;
   });
-
 
   camera.lookAt(0, 0, 0);
 
