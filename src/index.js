@@ -20,7 +20,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 
 // Load the image as a texture
-const backgroundImage = textureLoader.load("/static/textures/matcaps/35.jfif");
+const backgroundImage = textureLoader.load('/static/textures/matcaps/x.png');
 
 // Set the scene background to the image texture
 scene.background = backgroundImage;
@@ -28,7 +28,8 @@ scene.background = backgroundImage;
  * Objects
  */
 
-let hearts = [];
+ 
+
 const fontLoader = new THREE.FontLoader();
 fontLoader.load(
   "/static/fonts/helvetiker_bold.typeface.json",
@@ -36,7 +37,7 @@ fontLoader.load(
   // '/fonts/optimer_regular.typeface.json',
   (font) => {
     const textGeometry = new THREE.TextGeometry("Lee Jackson", {
-      font,
+      font, 
       size: 0.5,
       height: 0.2,
       curveSegments: 100,
@@ -54,35 +55,16 @@ fontLoader.load(
     //     textGeometry.boundingBox.max.z * -0.5,
     // )
     textGeometry.center(); // does the same things as above code
-    const matcapTexture = textureLoader.load(
-      "/static/textures/matcaps/35.jfif"
-    );
-
-    // Create a MeshMatcapMaterial with metallic properties
+    const matcapTexture = textureLoader.load("/static/textures/matcaps/x.png");
     const material = new THREE.MeshMatcapMaterial({
-      matcap: matcapTexture,
-      metalness: 1 // Adjust the value as needed (0 to 1)
+      matcap: matcapTexture
     });
-
     const text = new THREE.Mesh(textGeometry, material);
     scene.add(text);
 
     const heartShape = new THREE.Shape();
 
-    heartShape.moveTo(0, 0);
-
-    heartShape.bezierCurveTo(0, 0, 0, 0, 0, 0);
-
-    heartShape.bezierCurveTo(0, 0, 0, 0, 0, 0);
-
-    heartShape.bezierCurveTo(0, 0, 0, 0, 0, 0);
-
-    heartShape.bezierCurveTo(0, 0, 0, 0, 0, 0);
-
-    heartShape.bezierCurveTo(0, 0, 0, 0, 0, 0);
-
-    heartShape.bezierCurveTo(0, 0, 0, 0, 0, 0);
-
+    
     const matcap5Texture = textureLoader.load("/static/textures/matcaps/5.png");
     const matcap8Texture = textureLoader.load("/static/textures/matcaps/8.png");
     const matcap5 = new THREE.MeshMatcapMaterial({
@@ -112,8 +94,8 @@ fontLoader.load(
       heart.rotation.y = Math.random() * Math.PI;
       const scale = Math.random();
       heart.scale.set(scale, scale, scale);
-      hearts.push(heart);
-      scene.add(heart);
+      
+      
     }
   }
 );
@@ -177,15 +159,12 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 /**
  * Animate
  */
-const clock = new THREE.Clock();
+
 
 const tick = () => {
-  const elapsedTime = clock.getElapsedTime();
+ 
 
-  hearts.forEach((heart) => {
-    heart.rotation.x = elapsedTime;
-    heart.rotation.y = elapsedTime;
-  });
+
 
   camera.lookAt(0, 0, 0);
 
