@@ -11,15 +11,16 @@ const gui = new dat.GUI();
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 
-// Scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color("#049EF4");
 
-/**
- * Textures
- */
+// Create a texture loader
 const textureLoader = new THREE.TextureLoader();
 
+// Load the image as a texture
+const backgroundImage = textureLoader.load('/static/textures/matcaps/OIG (2).jfif');
+
+// Set the scene background to the image texture
+scene.background = backgroundImage;
 /**
  * Objects
  */
@@ -49,7 +50,7 @@ fontLoader.load(
     //     textGeometry.boundingBox.max.z * -0.5,
     // )
     textGeometry.center(); // does the same things as above code
-    const matcapTexture = textureLoader.load("/static/textures/matcaps/3.png");
+    const matcapTexture = textureLoader.load("/static/textures/matcaps/OIG (2).jfif");
     const material = new THREE.MeshMatcapMaterial({
       matcap: matcapTexture
     });
@@ -170,8 +171,7 @@ const tick = () => {
     heart.rotation.y = elapsedTime;
   });
 
-  camera.position.x = Math.sin(elapsedTime);
-  camera.position.y = Math.cos(elapsedTime);
+
   camera.lookAt(0, 0, 0);
 
   // Update controls
