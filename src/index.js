@@ -31,15 +31,15 @@ fontLoader.load(
   // '/fonts/optimer_regular.typeface.json',
   (font) => {
     const textGeometry = new THREE.TextGeometry("Lee Jackson", {
-      font,
+      font, 
       size: 0.5,
       height: 0.2,
-      curveSegments: 10,
+      curveSegments: 100,
       bevelEnabled: true,
-      bevelThickness: 0.03,
+      bevelThickness: 0.006,
       bevelSize: 0.02,
-      bevelOffset: 0,
-      bevelSegments: 1
+      bevelOffset: 0.004,
+      bevelSegments: 10
     });
 
     // textGeometry.computeBoundingBox()
@@ -134,14 +134,14 @@ window.addEventListener("resize", () => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(
-  75,
+  100,
   sizes.width / sizes.height,
   0.1,
   100
 );
-camera.position.x = 1;
-camera.position.y = 1;
-camera.position.z = 3;
+camera.position.x = 3;
+camera.position.y = 2;
+camera.position.z = 1;
 scene.add(camera);
 
 // Controls
