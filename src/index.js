@@ -8,6 +8,9 @@ import * as dat from "dat.gui";
 // Debug
 const gui = new dat.GUI();
 
+var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(1, 1, 1);
+
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 
@@ -17,13 +20,15 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 
 // Load the image as a texture
-const backgroundImage = textureLoader.load('/static/textures/matcaps/OIG (2).jfif');
+const backgroundImage = textureLoader.load('/static/textures/matcaps/35.jfif');
 
 // Set the scene background to the image texture
 scene.background = backgroundImage;
 /**
  * Objects
  */
+
+ 
 let hearts = [];
 const fontLoader = new THREE.FontLoader();
 fontLoader.load(
@@ -40,7 +45,7 @@ fontLoader.load(
       bevelThickness: 0.006,
       bevelSize: 0.02,
       bevelOffset: 0.004,
-      bevelSegments: 10
+      bevelSegments: 1
     });
 
     // textGeometry.computeBoundingBox()
@@ -50,7 +55,7 @@ fontLoader.load(
     //     textGeometry.boundingBox.max.z * -0.5,
     // )
     textGeometry.center(); // does the same things as above code
-    const matcapTexture = textureLoader.load("/static/textures/matcaps/OIG (2).jfif");
+    const matcapTexture = textureLoader.load("/static/textures/matcaps/35.jfif");
     const material = new THREE.MeshMatcapMaterial({
       matcap: matcapTexture
     });
@@ -130,24 +135,30 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-/**
- * Camera
- */
 // Base camera
 const camera = new THREE.PerspectiveCamera(
-  100,
-  sizes.width / sizes.height,
-  0.1,
-  100
+ 100,
+ sizes.width / sizes.height,
+ 0.1,
+ 100
 );
 camera.position.x = 3;
 camera.position.y = 2;
 camera.position.z = 1;
+
+// Update the camera's aspect ratio
+camera.aspect = sizes.width / sizes.height;
+camera.updateProjectionMatrix();
+
+// Add the camera to the scene
 scene.add(camera);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
+
+// Add the ambient light to the scene
+scene.add(directionalLight);
 
 /**
  * Renderer
