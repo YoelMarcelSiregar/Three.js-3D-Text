@@ -7,3 +7,6 @@ This code is a stylized 3D text scene and camera animation with Three.js.
 
 Created with CodeSandbox
 
+view here 
+
+https://pkq999.csb.app/
