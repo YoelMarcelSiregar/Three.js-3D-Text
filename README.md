@@ -7,7 +7,6 @@
 
 This code is a stylized interactive 3D text scene and camera animation with Three.js.
 
-Please feel free to customize and make your own.
 
 view here 
 
