@@ -6,8 +6,8 @@
 Create stunning interactive 3D text scenes and camera animations with Three.js!
 
 **Demo Links:**
-- [View Demo 1](https://4tj3z4.csb.app/)
-- [View Demo 2](https://pkq999.csb.app/)
+- [Live Demo 1](https://4tj3z4.csb.app/)
+- [Live Demo 2](https://pkq999.csb.app/)
 
 ## Overview
 
