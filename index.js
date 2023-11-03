@@ -14,10 +14,15 @@ const scene = new THREE.Scene();
 // Texture loader
 const textureLoader = new THREE.TextureLoader();
 
+// Load the background texture
 const backgroundImage = textureLoader.load(
   "/static/textures/matcaps/scale.png"
 );
 
+// Set the repeat property to control the aspect ratio
+backgroundImage.repeat.set(-120, 1); // For example, doubling the width (2) while keeping the height the same (1)
+
+// Assign the modified background texture to the scene's background
 scene.background = backgroundImage;
 
 // Font loader
