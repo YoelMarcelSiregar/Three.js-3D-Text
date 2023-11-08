@@ -1,7 +1,6 @@
 # Three.js-3D-Text
 
 ![3D Text Example](https://github.com/Imagineer99/Three.js-3D-Text/assets/130007945/c926f184-3233-4a54-81c1-34912a355bbf)
-![3D Text Example](https://gyazo.com/67670ce58bee867aa2939b3c09224f37.gif)
 
 
 Create stunning interactive 3D text scenes and camera animations with Three.js!
